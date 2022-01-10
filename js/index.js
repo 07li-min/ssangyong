@@ -8,7 +8,6 @@ $(document).ready(function(){
 
 	myAOS();
 
-  // header
   $('.hd .gnb .models').hover(function(){
     $('.hd .car_list').toggleClass('on');
   });
@@ -16,8 +15,11 @@ $(document).ready(function(){
     $('.hd .dep2').toggleClass('on');
   });
 
-
-  // 모바일메뉴
+  $('.toggle-btn').click(function(){
+    $(this).toggleClass('active');
+    $('.hd .mob-gnb').toggleClass('active');
+  });
+  
   $('.accordion .tit').click(function(j) {
     var dropDown = $(this).closest('.dep1').find('.dep2');
     $(this).closest('.accordion').find('.dep2').not(dropDown).slideUp();
@@ -33,8 +35,6 @@ $(document).ready(function(){
 
 
 
-
-  // 배너 슬라이드
   var mySwiper = new Swiper('.banner .test-swiper', {
     loop: true,
     autoplay: {
@@ -75,7 +75,6 @@ $(document).ready(function(){
   });
 
 
-  // best 슬라이드
   var swiperbest = new Swiper('.best-Swiper', {
     slidesPerView: 3,
     spaceBetween: 30,
@@ -98,7 +97,6 @@ $(document).ready(function(){
 
   
 
-  // sns
   var swipersns1 = new Swiper(".sns .item1", {
     slidesPerView: "auto",
     spaceBetween: 60,
@@ -139,7 +137,7 @@ $(document).ready(function(){
     },
   });
 
-  // sns
+
   $('.sns .list-item p').click(function(){
     console.log('this.index=', $(this).index())
     $('.sns .list-item p').removeClass('on');
@@ -154,7 +152,7 @@ $(document).ready(function(){
   });
 
 
-  // side-btn 
+
   $('.side .menu-btn').on('click', function(e){
     $(this).toggleClass('active');
   });
@@ -168,7 +166,6 @@ $(document).ready(function(){
   });
 
 
-  // 스크롤시 hd 온오프
   setScrollDirection();
   function setScrollDirection(target) {
     var w = window;
@@ -185,7 +182,6 @@ $(document).ready(function(){
       var y = w.pageYOffset || d.scrollTop;
       
       if (y > currentY) {
-        // move down
         console.log('move down', t);
         if (!t.classList.contains("scroll-down")) {
           t.classList.remove("scroll-up");
@@ -193,19 +189,16 @@ $(document).ready(function(){
         }
         
       } else {
-        // move up
         if (!t.classList.contains("scroll-up")) {
           t.classList.remove("scroll-down");
           t.classList.add("scroll-up");
           
         }
       }
-      
       if (60 > currentY) {
         t.classList.remove("scroll-down");
         t.classList.add("scroll-up");
       }
-      
       currentY = y;
     }
   }
